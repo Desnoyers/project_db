@@ -4,7 +4,7 @@ namespace project_bazi.Services
 {
     public class AppState
     {
-        private static bool state = true;
+        private static bool state = false;
 
         public AppState()
         {
