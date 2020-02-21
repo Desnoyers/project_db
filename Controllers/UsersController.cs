@@ -18,7 +18,7 @@ namespace project_bazi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : Controller
-    {        
+    {
         private readonly db_201920z_va_prj_hrmContext _context = new db_201920z_va_prj_hrmContext();
 
         [HttpGet]
@@ -44,6 +44,11 @@ namespace project_bazi.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult<string> Login([FromForm] LoginModel emp)
         {
+            if (AppState.Authenticated == true)
+            {
+                RedirectToAction("Index", "Dashboard");
+            }
+
             var user = _context.Employees.Where(x => x.Username == emp.Username).FirstOrDefault();
 
             if (user == null)
@@ -57,33 +62,10 @@ namespace project_bazi.Controllers
             {
                 return BadRequest("incorrect password");
             }
-            
-            // EmployeesDto employee = new EmployeesDto();
-
-            // #region Emp initialization
-            // employee.Embg = user.Embg;
-            // employee.FirstName = user.FirstName;
-            // employee.LastName = user.LastName;
-            // employee.IsActive = user.IsActive;
-            // employee.IsManaged = user.IsManaged;
-            // employee.Phone = user.Phone;
-            // employee.Email = user.Email;
-            // employee.Gender = user.Gender;
-            // employee.Salary = user.Salary;
-            // employee.Street = user.Street;
-            // employee.StreetNo = user.StreetNo;
-            // employee.Username = user.Username;
-            // employee.Password = user.Password;
-            // employee.City = user.City;
-            // employee.BirthDate = user.BirthDate;
-            // employee.DepManager = user.DepManager;
-            // employee.DepNo = user.DepNo;
-            // #endregion
 
             AppState.Authenticated = true;
-            
-            // TempData["object"] = JsonConvert.SerializeObject(user.Embg);
-            TempData["object"] = user.Embg;
+
+            AppState.UserStateData = user.Embg;
 
             return RedirectToAction("Index", "Dashboard");
         }
@@ -131,10 +113,11 @@ namespace project_bazi.Controllers
             return Ok("Registered");
         }
 
-        [HttpPost("Logout")]
+        [HttpGet("Logout")]
         public ActionResult Logout()
         {
             AppState.Authenticated = false;
+            AppState.UserStateData = null;
 
             return RedirectToAction("Login", "Users");
         }

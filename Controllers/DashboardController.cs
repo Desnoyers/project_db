@@ -22,7 +22,7 @@ namespace project_bazi.Controllers
 
             if (AppState.Authenticated == true)
             {
-                string userEmbg = TempData["object"] as string;
+                string userEmbg = AppState.UserStateData;
 
                 var user = _context.Employees.Find(userEmbg);
 
@@ -55,7 +55,7 @@ namespace project_bazi.Controllers
             }
             else
             {
-                return new StatusCodeResult(StatusCodes.Status400BadRequest);
+                return RedirectToAction("Login","Users");
             }
         }
     }

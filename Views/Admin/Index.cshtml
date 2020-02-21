@@ -324,7 +324,7 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">@Model.FirstName @Model.LastName</a>
+                                                        <a href="#">@Model.FirstName @Model.LastName (Admin)</a>
                                                     </h5>
                                                     <span class="email">@Model.Email</span>
                                                 </div>
@@ -341,7 +341,7 @@
                                             </div>
                                             <div class="account-dropdown__footer">
                                                 <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout @Html.ActionLink("Logout", "Logout", "Users")</a>
+                                                    <i class="zmdi zmdi-power"></i>@Html.ActionLink("Logout", "Logout", "Users")</a>
                                             </div>
                                         </div>
                                     </div>
