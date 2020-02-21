@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using project_bazi.DataAccess;
 using project_bazi.Models;
 using project_bazi.Services;
-
+using Newtonsoft.Json;
 
 namespace project_bazi.Controllers
 {
@@ -58,28 +58,32 @@ namespace project_bazi.Controllers
                 return BadRequest("incorrect password");
             }
             
-            EmployeesDto employee = new EmployeesDto();
+            // EmployeesDto employee = new EmployeesDto();
 
-            employee.Embg = user.Embg;
-            employee.FirstName = user.FirstName;
-            employee.LastName = user.LastName;
-            employee.IsActive = user.IsActive;
-            employee.IsManaged = user.IsManaged;
-            employee.Phone = user.Phone;
-            employee.Email = user.Email;
-            employee.Gender = user.Gender;
-            employee.Salary = user.Salary;
-            employee.Street = user.Street;
-            employee.StreetNo = user.StreetNo;
-            employee.Username = user.Username;
-            employee.Password = user.Password;
-            employee.City = user.City;
-            employee.BirthDate = user.BirthDate;
-            employee.DepManager = user.DepManager;
-            employee.DepNo = user.DepNo;
+            // #region Emp initialization
+            // employee.Embg = user.Embg;
+            // employee.FirstName = user.FirstName;
+            // employee.LastName = user.LastName;
+            // employee.IsActive = user.IsActive;
+            // employee.IsManaged = user.IsManaged;
+            // employee.Phone = user.Phone;
+            // employee.Email = user.Email;
+            // employee.Gender = user.Gender;
+            // employee.Salary = user.Salary;
+            // employee.Street = user.Street;
+            // employee.StreetNo = user.StreetNo;
+            // employee.Username = user.Username;
+            // employee.Password = user.Password;
+            // employee.City = user.City;
+            // employee.BirthDate = user.BirthDate;
+            // employee.DepManager = user.DepManager;
+            // employee.DepNo = user.DepNo;
+            // #endregion
 
-            // HttpContext.Session.SetString("Logged_in", "true");
-            AppState.State = true;
+            AppState.Authenticated = true;
+            
+            // TempData["object"] = JsonConvert.SerializeObject(user.Embg);
+            TempData["object"] = user.Embg;
 
             return RedirectToAction("Index", "Dashboard");
         }
@@ -127,6 +131,13 @@ namespace project_bazi.Controllers
             return Ok("Registered");
         }
 
+        [HttpPost("Logout")]
+        public ActionResult Logout()
+        {
+            AppState.Authenticated = false;
+
+            return RedirectToAction("Login", "Users");
+        }
         private bool existsUsername(string username)
         {
             var user = _context.Employees.Where(x => x.Username == username).FirstOrDefault();

@@ -1,24 +1,24 @@
 using System;
+using System.Collections.Generic;
 
 namespace project_bazi.Services
 {
     public class AppState
     {
-        private static bool state = false;
-
+        private static bool authenticated = false;
         public AppState()
         {
-            
         }
-        public static bool State
+
+        public static bool Authenticated
         {
             get
             {
-                return state;
+                return authenticated;
             }
             set
             {
-                state = value;
+                authenticated = value;
             }
         }
     }
