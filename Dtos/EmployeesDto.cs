@@ -24,5 +24,6 @@ namespace project_bazi.Models
         public string IsManaged { get; set; }
         public int? DepManager { get; set; }
         public int IsActive { get; set; }
+        public string DepName { get; set; }
     }
 }

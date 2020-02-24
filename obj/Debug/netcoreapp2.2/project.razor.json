@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\PC\\Desktop\\project_bazi\\project_bazi\\project_bazi.csproj",
+  "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\project_bazi.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",
@@ -2961,58 +2961,63 @@
   "RootNamespace": "project_bazi",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\PC\\Desktop\\project_bazi\\project_bazi\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\PC\\Desktop\\project_bazi\\project_bazi\\Views\\Users\\Register.cshtml",
-      "TargetPath": "Views\\Users\\Register.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\PC\\Desktop\\project_bazi\\project_bazi\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\PC\\Desktop\\project_bazi\\project_bazi\\Views\\Shared\\_CookieConsentPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_CookieConsentPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\PC\\Desktop\\project_bazi\\project_bazi\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\PC\\Desktop\\project_bazi\\project_bazi\\Views\\Regular\\Index.cshtml",
-      "TargetPath": "Views\\Regular\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\PC\\Desktop\\project_bazi\\project_bazi\\Views\\Users\\Login.cshtml",
-      "TargetPath": "Views\\Users\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\PC\\Desktop\\project_bazi\\project_bazi\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\PC\\Desktop\\project_bazi\\project_bazi\\Views\\Home\\Index.cshtml",
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\PC\\Desktop\\project_bazi\\project_bazi\\Views\\Admin\\Index.cshtml",
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Admin\\Employees.cshtml",
+      "TargetPath": "Views\\Admin\\Employees.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Shared\\_CookieConsentPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_CookieConsentPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Admin\\Index.cshtml",
       "TargetPath": "Views\\Admin\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\PC\\Desktop\\project_bazi\\project_bazi\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Regular\\Index.cshtml",
+      "TargetPath": "Views\\Regular\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Users\\Register.cshtml",
+      "TargetPath": "Views\\Users\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Users\\Login.cshtml",
+      "TargetPath": "Views\\Users\\Login.cshtml",
       "FileKind": "mvc"
     }
   ],

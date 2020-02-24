@@ -13,6 +13,7 @@ namespace project_bazi.DataAccess
         public db_201920z_va_prj_hrmContext(DbContextOptions<db_201920z_va_prj_hrmContext> options)
             : base(options)
         {
+            
         }
 
         public virtual DbSet<Attendance> Attendance { get; set; }
