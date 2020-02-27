@@ -2961,8 +2961,18 @@
   "RootNamespace": "project_bazi",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Admin\\AddDepartment.cshtml",
+      "TargetPath": "Views\\Admin\\AddDepartment.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Admin\\Departments.cshtml",
+      "TargetPath": "Views\\Admin\\Departments.cshtml",
       "FileKind": "mvc"
     },
     {

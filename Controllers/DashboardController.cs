@@ -218,5 +218,125 @@ namespace project_bazi.Controllers
                 return RedirectToAction("Login","Users");
             }
         }
+
+        [HttpGet("Departments")]
+        public ActionResult Departments()
+        {
+            if (AppState.Authenticated == true)
+            {
+                string userEmbg = AppState.UserStateData;
+
+                var user = _context.Employees.Find(userEmbg);
+
+                EmployeesDto employee = new EmployeesDto();
+
+                #region Emp initialization
+                
+                employee.Embg = user.Embg;
+                employee.FirstName = user.FirstName;
+                employee.LastName = user.LastName;
+                employee.IsActive = user.IsActive;
+                employee.IsManaged = user.IsManaged;
+                employee.Phone = user.Phone;
+                employee.Email = user.Email;
+                employee.Gender = user.Gender;
+                employee.Salary = user.Salary;
+                employee.Street = user.Street;
+                employee.StreetNo = user.StreetNo;
+                employee.Username = user.Username;
+                employee.Password = user.Password;
+                employee.City = user.City;
+                employee.BirthDate = user.BirthDate;
+                employee.DepManager = user.DepManager;
+                employee.DepNo = user.DepNo;
+             
+                #endregion
+
+                return View("../Admin/Departments", employee);
+              
+            }
+            else
+            {
+                return RedirectToAction("Login","Users");
+            }
+        }
+
+        [HttpGet("Departments/AddDep")]
+        public ActionResult AddDep()
+        {
+            if (AppState.Authenticated == true)
+            {
+                string userEmbg = AppState.UserStateData;
+
+                var user = _context.Employees.Find(userEmbg);
+
+                EmployeesDto employee = new EmployeesDto();
+
+                #region Emp initialization
+                
+                employee.Embg = user.Embg;
+                employee.FirstName = user.FirstName;
+                employee.LastName = user.LastName;
+                employee.IsActive = user.IsActive;
+                employee.IsManaged = user.IsManaged;
+                employee.Phone = user.Phone;
+                employee.Email = user.Email;
+                employee.Gender = user.Gender;
+                employee.Salary = user.Salary;
+                employee.Street = user.Street;
+                employee.StreetNo = user.StreetNo;
+                employee.Username = user.Username;
+                employee.Password = user.Password;
+                employee.City = user.City;
+                employee.BirthDate = user.BirthDate;
+                employee.DepManager = user.DepManager;
+                employee.DepNo = user.DepNo;
+             
+                #endregion
+              
+                if(employee.DepManager != null)
+                {
+                    return View("../Admin/AddDepartment", employee);
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Users");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login","Users");
+            }
+        }
+
+        [HttpPost("Departments/AddDep")]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddDep([FromForm] Departments department)
+        {
+            if(AppState.Authenticated != true)
+            {
+                return RedirectToAction("Login", "Users");
+            }
+
+            var exist = _context.Departments.Find(department.DepNo);
+
+            if(exist != null)
+            {
+               return BadRequest("Department number exist");
+            }
+
+            _context.Departments.Add(department);
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch(DbUpdateException ex)
+            {
+                ex.GetBaseException();
+            }
+
+            return RedirectToAction("Departments", "Dashboard");
+        }
     }
 }

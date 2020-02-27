@@ -1,5 +1,5 @@
 @{
-    Layout = null;
+Layout = null;
 }
 
 @model EmployeesDto;
@@ -49,7 +49,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img  src="~/images/icon/logo.png" alt="HRM" />
+                            <img src="~/images/icon/logo.png" alt="HRM" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -62,7 +62,7 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
+                        <li class="active has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
@@ -182,7 +182,8 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input au-input--xl" type="text" name="search"
+                                    placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
@@ -265,14 +266,14 @@
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
                                             @{
-                                                if(Model.Gender == 'M')
-                                                {
-                                                    <img src="~/images/icon/user-male.png" />
-                                                }
-                                                else
-                                                {
-                                                    <img src="~/images/icon/user-female.png" />
-                                                }
+                                            if(Model.Gender == 'M')
+                                            {
+                                            <img src="~/images/icon/user-male.png" />
+                                            }
+                                            else
+                                            {
+                                            <img src="~/images/icon/user-female.png" />
+                                            }
                                             }
                                         </div>
                                         <div class="content">
@@ -283,14 +284,14 @@
                                                 <div class="image">
                                                     <a href="#">
                                                         @{
-                                                            if(Model.Gender == 'M')
-                                                            {
-                                                                <img src="~/images/icon/user-male.png" />
-                                                            }
-                                                            else
-                                                            {
-                                                                <img src="~/images/icon/user-male.png" />
-                                                            }
+                                                        if(Model.Gender == 'M')
+                                                        {
+                                                        <img src="~/images/icon/user-male.png" />
+                                                        }
+                                                        else
+                                                        {
+                                                        <img src="~/images/icon/user-male.png" />
+                                                        }
                                                         }
                                                     </a>
                                                 </div>
@@ -312,7 +313,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href=@Url.Action("Logout", "Users")>
+                                                <a href=@Url.Action("Logout", "Users" )>
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -329,13 +330,11 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                         
+
                     </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Proekt bazi 2019/20 HRM.</p>
-                            </div>
+                    <div class="row">
+                        <div id="myProjects" class="col-md-12">
+
                         </div>
                     </div>
                 </div>
@@ -369,6 +368,37 @@
 
     <!-- Main JS-->
     <script src="~/js/main.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+
+            getData();
+        });
+
+        function getData(){
+
+            $page = $("#myProjects");
+
+            $.ajax({
+                url: "http://localhost:5000/api/Employees/MyProjects",
+                type: "GET",
+                success: function(response) {
+
+                    console.log(response);
+
+                    jQuery.each(response, function(i, item){
+
+                        $page.append("<div class='card'><div class='card-header'>" + item.proName + "</div><div class='card-body'></div></div>");
+                    });
+                },
+                error: function(response) {
+
+                    console.log("Error " + response.error);
+                } 
+            });
+        }
+    </script>
 
 </body>
 

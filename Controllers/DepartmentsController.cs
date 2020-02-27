@@ -20,7 +20,7 @@ namespace project_bazi.Controllers
     {
         private readonly db_201920z_va_prj_hrmContext _context = new db_201920z_va_prj_hrmContext();
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public async Task<List<Departments>> GetAll()
         {
             if(AppState.Authenticated == true)

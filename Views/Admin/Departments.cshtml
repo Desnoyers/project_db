@@ -63,7 +63,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href=href=@Url.Action("Index")>
+                            <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
@@ -160,13 +160,13 @@
                             <a class="js-arrow" href=@Url.Action("Index")>
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li class="active">
-                            <a href="#">
-                                <i class="fas fa-users"></i>Employees</a>
-                                
-                        </li>
                         <li>
-                            <a href="@Url.Action("Departments")">
+                            <a href=@Url.Action("Employees")>
+                                <i class="fas fa-users"></i>Employees
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href=@Url.Action("Departments")>
                                 <i class="fas fa-building"></i>Departments</a>
                         </li>
                         <li>
@@ -358,26 +358,18 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                         
-                    </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-sm-12 col-md-10">
-                                <a style="color: white;" class="btn btn-success" href=@Url.Action("Add", "Dashboard")> <i class="fas fa-plus"></i> Add new employee</a>
+                         <div class="row">
+                            <div class="col-lg-6 col-sm-8 col-md-6">
+                                <a style="color: white;" class="btn btn-success" href=@Url.Action("AddDep", "Dashboard")> <i class="fas fa-plus"></i> Create department</a>
                                 <br>
                                 <br>
                                 <div class="table-responsive table--no-card m-b-30">
-                                    <table id="empTable" class="table table-borderless table-striped table-earning">
+                                    <table id="depTable" class="table table-borderless table-striped table-earning">
                                         <thead>
                                             <tr>
-                                                <th>First name</th>
-                                                <th>Last name</th>
-                                                <th>Email</th>
-                                                <th class="text-right">Birth date</th>
-                                                <th>City</th>
-                                                <th class="text-right">Salary</th>
-                                                <th>Department</th>
-                                                <th>Active</th>
-                                                <th class="text-center">Options</th>
+                                                <th>Dep#</th>
+                                                <th>Name</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -386,6 +378,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -400,7 +393,7 @@
     <!-- Bootstrap JS-->
     <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS -->
+    <!-- Vendor JS       -->
     <script src="~/vendor/slick/slick.min.js">
     </script>
     <script src="~/vendor/wow/wow.min.js"></script>
@@ -428,23 +421,16 @@
 
         function getData(){
             
-            $table = $("#empTable");
+            $table = $("#depTable");
 
             $.ajax({
-                url: "http://localhost:5000/api/Employees/GetAll",
+                url: "http://localhost:5000/api/Departments/GetAll",
                 type: "GET",
                 success: function(response) {
 
                     jQuery.each(response, function(i, item){
 
-                        if(item.isActive == 1){
-
-                            $table.append("<tr> <td>" + item.firstName + "</td>  <td>" + item.lastName + "</td>  <td>" + item.email + "</td>  <td>" + item.birthDate.substring(0, 10) + "</td>  <td>" + item.city + "</td>  <td>" + item.salary + " MKD" + "</td>  <td>" + item.depName + "</td> <td><span style='font-size: 16px' class='badge badge-success'>Active</span></td> <td><button style='margin-left: 5px;margin-right: 5px;' class='btn btn-danger'><i class='fas fa-trash-alt'></i></button><button style='margin-left: 5px;margin-right: 5px;' class='btn btn-success'><i class='fas fa-edit'></i></button><button style='margin-left: 5px;margin-right: 5px;' class='btn btn-info'><i class='fas fa-info'></i></button></td> </tr>");
-                        }
-                        else
-                        {
-                            $table.append("<tr> <td>" + item.firstName + "</td>  <td>" + item.lastName + "</td>  <td>" + item.email + "</td>  <td>" + item.birthDate.substring(0, 10) + "</td>  <td>" + item.city + "</td>  <td>" + item.salary + " MKD" + "</td>  <td>" + item.depName + "</td> <td><span style='font-size: 16px' class='badge badge-danger'>Not active</span></td> <td><button style='margin-left: 5px;margin-right: 5px;' class='btn btn-danger'><i class='fas fa-trash-alt'></i></button><button style='margin-left: 5px;margin-right: 5px;' class='btn btn-success'><i class='fas fa-edit'></i></button><button style='margin-left: 5px;margin-right: 5px;' class='btn btn-info'><i class='fas fa-info'></i></button></td> </tr>");
-                        }
+                        $table.append("<tr> <td>" + item.depNo  + "</td>  <td>" + item.depName  + "</td> <td><button class='btn btn-info'><i class='fa fa-info'></i></button></td></tr>");
                     })
                 },
                 error: function(response) {

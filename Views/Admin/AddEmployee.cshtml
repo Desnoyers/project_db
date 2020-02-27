@@ -156,11 +156,11 @@ Layout = null;
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#">
+                        <li class="has-sub">
+                            <a class="js-arrow" href=@Url.Action("Index")>
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href=@Url.Action("Employees")>
                                 <i class="fas fa-users"></i>Employees
                             </a>
@@ -342,9 +342,8 @@ Layout = null;
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>@Html.ActionLink("Logout", "Logout",
-                                                    "Users")</a>
+                                                <a href=@Url.Action("Logout", "Users")>
+                                                    <i class="zmdi zmdi-power"></i> Logout</a>
                                             </div>
                                         </div>
                                     </div>
@@ -571,7 +570,7 @@ Layout = null;
 
             $.ajax({
 
-                url: "http://localhost:5000/api/Departments",
+                url: "http://localhost:5000/api/Departments/GetAll",
                 type: "GET",
                 success: function(response){
 

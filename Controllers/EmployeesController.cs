@@ -62,5 +62,26 @@ namespace project_bazi.Controllers
                  return null;
             }
         }
+        
+        [HttpGet("MyProjects")]
+        public async Task<List<WorkOn>> MyProjects()
+        {
+            if(AppState.Authenticated)
+            {
+                List<WorkOn> projects = new List<WorkOn>();
+
+                string embg = AppState.UserStateData;
+
+                var all = await _context.WorkOn.Where(x => x.Embg == embg).ToListAsync();
+
+                projects = all; 
+
+                return projects;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
