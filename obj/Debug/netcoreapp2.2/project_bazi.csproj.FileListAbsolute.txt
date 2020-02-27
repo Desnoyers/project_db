@@ -69,3 +69,4 @@ C:\Users\PC\Desktop\SQL\proekt\project_bazi\project_bazi\obj\Debug\netcoreapp2.2
 C:\Users\PC\Desktop\SQL\proekt\project_bazi\project_bazi\obj\Debug\netcoreapp2.2\Razor\Views\Users\Register.cshtml.g.cs
 C:\Users\PC\Desktop\SQL\proekt\project_bazi\project_bazi\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\PC\Desktop\SQL\proekt\project_bazi\project_bazi\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\PC\Desktop\SQL\proekt\project_bazi\project_bazi\obj\Debug\netcoreapp2.2\Razor\Views\Admin\AddEmployee.cshtml.g.cs

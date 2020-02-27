@@ -1,5 +1,5 @@
 @{
-    Layout = null;
+Layout = null;
 }
 
 @model EmployeesDto;
@@ -16,7 +16,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>Dashboard | Employees</title>
 
     <!-- Fontfaces CSS-->
     <link href="~/css/font-face.css" rel="stylesheet" media="all">
@@ -49,7 +49,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img  src="~/images/icon/logo.png" alt="HRM" />
+                            <img src="~/images/icon/logo.png" alt="HRM" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -150,7 +150,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img style="height: auto; width: 40%;" src="images/icon/logo.png" alt="HRM" />
+                    <img src="images/icon/logo.png" alt="HRM" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -161,12 +161,41 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
+                            <a href=@Url.Action("Employees")>
+                                <i class="fas fa-users"></i>Employees
+                            </a>
+                        </li>
+                        <li>
                             <a href="#">
-                                <i class="fas fa-calendar-alt"></i>Request a leave</a>
+                                <i class="fas fa-building"></i>Departments</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-code-branch"></i>Projects</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-calendar-alt"></i>Leaves</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-money-bill-alt"></i>Payroll</a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="fas fa-folder"></i>Documents</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-clock"></i>Attendances</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-chart-pie"></i>Reports</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-car"></i>Company vehicles</a>
                         </li>
                     </ul>
                 </nav>
@@ -182,7 +211,8 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input au-input--xl" type="text" name="search"
+                                    placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
@@ -265,14 +295,14 @@
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
                                             @{
-                                                if(Model.Gender == 'M')
-                                                {
-                                                    <img src="~/images/icon/user-male.png" />
-                                                }
-                                                else
-                                                {
-                                                    <img src="~/images/icon/user-female.png" />
-                                                }
+                                            if(Model.Gender == 'M')
+                                            {
+                                            <img src="~/images/icon/user-male.png" />
+                                            }
+                                            else
+                                            {
+                                            <img src="~/images/icon/user-female.png" />
+                                            }
                                             }
                                         </div>
                                         <div class="content">
@@ -283,20 +313,20 @@
                                                 <div class="image">
                                                     <a href="#">
                                                         @{
-                                                            if(Model.Gender == 'M')
-                                                            {
-                                                                <img src="~/images/icon/user-male.png" />
-                                                            }
-                                                            else
-                                                            {
-                                                                <img src="~/images/icon/user-male.png" />
-                                                            }
+                                                        if(Model.Gender == 'M')
+                                                        {
+                                                        <img src="~/images/icon/user-male.png" />
+                                                        }
+                                                        else
+                                                        {
+                                                        <img src="~/images/icon/user-male.png" />
+                                                        }
                                                         }
                                                     </a>
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">@Model.FirstName @Model.LastName</a>
+                                                        <a href="#">@Model.FirstName @Model.LastName (Admin)</a>
                                                     </h5>
                                                     <span class="email">@Model.Email</span>
                                                 </div>
@@ -312,8 +342,9 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href=@Url.Action("Logout", "Users")>
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-power"></i>@Html.ActionLink("Logout", "Logout",
+                                                    "Users")</a>
                                             </div>
                                         </div>
                                     </div>
@@ -329,13 +360,171 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                         
+
                     </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Proekt bazi 2019/20 HRM.</p>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <form action="http://localhost:5000/Dashboard/Employees/Add" method="POST">
+                                @Html.AntiForgeryToken()
+                                <div class="row">
+
+                                    <div class="col-md-6">
+
+                                        <div class="card">
+                                            <div class="card-header">Personal informations</div>
+                                            <div class="card-body card-block">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-hashtag"></i>
+                                                        </div>
+                                                        <input type="text" id="embg" name="embg" placeholder="Embg"
+                                                            class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-user"></i>
+                                                        </div>
+                                                        <input type="text" id="firstname" name="firstname"
+                                                            placeholder="First name" class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-user"></i>
+                                                        </div>
+                                                        <input type="text" id="lastname" name="lastname"
+                                                            placeholder="Last name" class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="date" id="birthdate" name="birthdate"
+                                                            placeholder="Birth date" class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-venus-mars"></i>
+                                                        </div>
+                                                        <select name="gender" id="gender" class="form-control" required>
+                                                            <option value="null">Gender</option>
+                                                            <option value="M">Male</option>
+                                                            <option value="F">Female</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-building"></i>
+                                                        </div>
+                                                        <input type="text" id="city" name="city" placeholder="City"
+                                                            class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-map-marker"></i>
+                                                        </div>
+                                                        <input type="text" id="street" name="street"
+                                                            placeholder="Street" class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-hashtag"></i>
+                                                        </div>
+                                                        <input type="text" id="streetNo" name="streetNo"
+                                                            placeholder="Street #" class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <div class="card">
+                                            <div class="card-header">Contact informations</div>
+                                            <div class="card-body card-block">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-phone"></i>
+                                                        </div>
+                                                        <input type="text" id="phone" name="phone" placeholder="Phone"
+                                                            class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-envelope"></i>
+                                                        </div>
+                                                        <input type="email" id="email" name="email"
+                                                            placeholder="Email" class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="card">
+                                            <div class="card-header">Job details</div>
+                                            <div class="card-body card-block">
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-briefcase"></i>
+                                                        </div>
+                                                        <select name="depName" id="depName" class="form-control" required>
+                                                            
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                 <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-money-bill-alt"></i>
+                                                        </div>
+                                                        <input type="number" step="100" id="salary" name="salary" placeholder="Salary"
+                                                            class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <button style="width: 100%; height: 45px;" type="submit" class="btn btn-success">Submit</button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -369,6 +558,37 @@
 
     <!-- Main JS-->
     <script src="~/js/main.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+            loadData();
+        });
+
+        function loadData(){
+
+            $selectList = $("#depName");
+
+            $.ajax({
+
+                url: "http://localhost:5000/api/Departments",
+                type: "GET",
+                success: function(response){
+
+                    jQuery.each(response, function(i, item){
+
+                        var ob = new Option(item.depName, item.depName);
+
+                        $selectList.append(ob);
+                    })
+                },
+                error: function(error){
+
+                    console.log(error);
+                }
+            });
+        }
+    </script>
 
 </body>
 

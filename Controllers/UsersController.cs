@@ -14,8 +14,7 @@ using Newtonsoft.Json;
 
 namespace project_bazi.Controllers
 {
-    [EnableCors("EnableCors")]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UsersController : Controller
     {
@@ -110,7 +109,7 @@ namespace project_bazi.Controllers
                 ex.GetBaseException();
             }
 
-            return Ok("Registered");
+            return RedirectToAction("Login");
         }
 
         [HttpGet("Logout")]

@@ -46,11 +46,11 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="~/images/icon/logo.png" alt="HRM">
+                                <img style="height: auto; width: 40%;" src="~/images/icon/logo.png" alt="HRM">
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="http://localhost:5000/api/users/login" method="post">
+                            <form action="http://localhost:5000/users/login" method="post">
                                 @Html.AntiForgeryToken()
                                 <div class="form-group">
                                     <label>Username</label>
@@ -60,7 +60,8 @@
                                     <label>Password</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password" required>
                                 </div>
-                                <span>Already registered?</span>
+                                <span><a style="color: #88a5ba;" href=@Url.Action("Register")><i class="fas fa-user-plus"> </i> Register here</a></span>
+                                <br>
                                 <br>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
                             </form>

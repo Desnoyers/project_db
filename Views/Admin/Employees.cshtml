@@ -157,12 +157,13 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href=@Url.Action("Index")>
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li class="active">
                             <a href="#">
                                 <i class="fas fa-users"></i>Employees</a>
+                                
                         </li>
                         <li>
                             <a href="#">
@@ -361,6 +362,9 @@
                     </div>
                         <div class="row">
                             <div class="col-lg-12 col-sm-12 col-md-10">
+                                <a style="color: white;" class="btn btn-success" href=@Url.Action("Add", "Dashboard")> <i class="fas fa-plus"></i> Add new employee</a>
+                                <br>
+                                <br>
                                 <div class="table-responsive table--no-card m-b-30">
                                     <table id="empTable" class="table table-borderless table-striped table-earning">
                                         <thead>
@@ -430,8 +434,6 @@
                 url: "http://localhost:5000/api/Employees/GetAll",
                 type: "GET",
                 success: function(response) {
-
-                    console.log(response);
 
                     jQuery.each(response, function(i, item){
 

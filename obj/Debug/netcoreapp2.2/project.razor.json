@@ -3001,6 +3001,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Admin\\AddEmployee.cshtml",
+      "TargetPath": "Views\\Admin\\AddEmployee.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Regular\\Index.cshtml",
       "TargetPath": "Views\\Regular\\Index.cshtml",
       "FileKind": "mvc"
