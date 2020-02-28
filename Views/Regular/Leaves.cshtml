@@ -1,5 +1,5 @@
 @{
-    Layout = null;
+Layout = null;
 }
 
 @model EmployeesDto;
@@ -62,7 +62,7 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
+                        <li class="active has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
@@ -150,52 +150,23 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="images/icon/logo.png" alt="HRM" />
+                    <img style="height: auto; width: 40%;" src="images/icon/logo.png" alt="HRM" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="has-sub">
-                            <a class="js-arrow" href=@Url.Action("Index")>
+                            <a class="js-arrow" href=@Url.Action("Index", "Dashboard")>
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li>
-                            <a href=@Url.Action("Employees")>
-                                <i class="fas fa-users"></i>Employees
-                            </a>
-                        </li>
                         <li class="active">
-                            <a href=@Url.Action("Departments")>
-                                <i class="fas fa-building"></i>Departments</a>
-                        </li>
-                        <li>
-                            <a href=@Url.Action("Projects")>
-                                <i class="fas fa-code-branch"></i>Projects</a>
-                        </li>
-                        <li>
-                            <a href=@Url.Action("Leaves")>
-                                <i class="fas fa-calendar-alt"></i>Leaves</a>
-                        </li>
-                        <li>
                             <a href="#">
-                                <i class="fas fa-money-bill-alt"></i>Payroll</a>
+                                <i class="fas fa-calendar-alt"></i>Request a leave</a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="fas fa-folder"></i>Documents</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-clock"></i>Attendances</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-chart-pie"></i>Reports</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-car"></i>Company vehicles</a>
                         </li>
                     </ul>
                 </nav>
@@ -211,7 +182,8 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input au-input--xl" type="text" name="search"
+                                    placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
@@ -294,14 +266,14 @@
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
                                             @{
-                                                if(Model.Gender == 'M')
-                                                {
-                                                    <img src="~/images/icon/user-male.png" />
-                                                }
-                                                else
-                                                {
-                                                    <img src="~/images/icon/user-female.png" />
-                                                }
+                                            if(Model.Gender == 'M')
+                                            {
+                                            <img src="~/images/icon/user-male.png" />
+                                            }
+                                            else
+                                            {
+                                            <img src="~/images/icon/user-female.png" />
+                                            }
                                             }
                                         </div>
                                         <div class="content">
@@ -312,20 +284,20 @@
                                                 <div class="image">
                                                     <a href="#">
                                                         @{
-                                                            if(Model.Gender == 'M')
-                                                            {
-                                                                <img src="~/images/icon/user-male.png" />
-                                                            }
-                                                            else
-                                                            {
-                                                                <img src="~/images/icon/user-male.png" />
-                                                            }
+                                                        if(Model.Gender == 'M')
+                                                        {
+                                                        <img src="~/images/icon/user-male.png" />
+                                                        }
+                                                        else
+                                                        {
+                                                        <img src="~/images/icon/user-male.png" />
+                                                        }
                                                         }
                                                     </a>
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">@Model.FirstName @Model.LastName (Admin)</a>
+                                                        <a href="#">@Model.FirstName @Model.LastName</a>
                                                     </h5>
                                                     <span class="email">@Model.Email</span>
                                                 </div>
@@ -341,8 +313,8 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href=@Url.Action("Logout", "Users")>
-                                                    <i class="zmdi zmdi-power"></i> Logout</a>
+                                                <a href=@Url.Action("Logout", "Users" )>
+                                                    <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
                                     </div>
@@ -358,27 +330,27 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                         <div class="row">
-                            <div class="col-lg-6 col-sm-8 col-md-6">
-                                <a style="color: white;" class="btn btn-success" href=@Url.Action("AddDep", "Dashboard")> <i class="fas fa-plus"></i> Create department</a>
-                                <br>
-                                <br>
-                                <div class="table-responsive table--no-card m-b-30">
-                                    <table id="depTable" class="table table-borderless table-striped table-earning">
-                                        <thead>
-                                            <tr>
-                                                <th>Dep#</th>
-                                                <th>Name</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
+                    <div class="row">
+                        <a href=@Url.Action("")><button class="btn btn-info"><i class="fa fa-info"></i> Request a leave</button></a>
+                        <br>
+                        <br>
+                        <div class="table-responsive table--no-card m-b-30">
+                            <table id="myLeaves" class="table table-borderless table-striped table-earning">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Description</th>
+                                        <th>From date</th>
+                                        <th>To date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -413,25 +385,27 @@
     <script src="~/js/main.js"></script>
 
     <script>
+
         $(document).ready(function(){
 
-                getData();
-
+            getData();
         });
 
         function getData(){
-            
-            $table = $("#depTable");
+
+            $page = $("#myLeaves");
 
             $.ajax({
-                url: "http://localhost:5000/api/Departments/GetAll",
+                url: "http://localhost:5000/api/Leaves/MyLeaves",
                 type: "GET",
                 success: function(response) {
 
+                    console.log(response);
+
                     jQuery.each(response, function(i, item){
 
-                        $table.append("<tr> <td>" + item.depNo  + "</td>  <td>" + item.depName  + "</td> <td><button class='btn btn-info'><i class='fa fa-info'></i></button></td></tr>");
-                    })
+                        $page.append("<div class='card'><div class='card-header'>" + item.proName + "</div><div class='card-body'></div></div>");
+                    });
                 },
                 error: function(response) {
 

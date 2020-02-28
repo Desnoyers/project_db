@@ -1,5 +1,5 @@
 @{
-    Layout = null;
+Layout = null;
 }
 
 @model EmployeesDto;
@@ -157,7 +157,7 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="has-sub">
-                            <a class="js-arrow" href=@Url.Action("Index")>
+                            <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
@@ -165,7 +165,7 @@
                                 <i class="fas fa-users"></i>Employees
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href=@Url.Action("Departments")>
                                 <i class="fas fa-building"></i>Departments</a>
                         </li>
@@ -173,7 +173,7 @@
                             <a href=@Url.Action("Projects")>
                                 <i class="fas fa-code-branch"></i>Projects</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href=@Url.Action("Leaves")>
                                 <i class="fas fa-calendar-alt"></i>Leaves</a>
                         </li>
@@ -211,7 +211,8 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input au-input--xl" type="text" name="search"
+                                    placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
@@ -294,14 +295,14 @@
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
                                             @{
-                                                if(Model.Gender == 'M')
-                                                {
-                                                    <img src="~/images/icon/user-male.png" />
-                                                }
-                                                else
-                                                {
-                                                    <img src="~/images/icon/user-female.png" />
-                                                }
+                                            if(Model.Gender == 'M')
+                                            {
+                                            <img src="~/images/icon/user-male.png" />
+                                            }
+                                            else
+                                            {
+                                            <img src="~/images/icon/user-female.png" />
+                                            }
                                             }
                                         </div>
                                         <div class="content">
@@ -312,14 +313,14 @@
                                                 <div class="image">
                                                     <a href="#">
                                                         @{
-                                                            if(Model.Gender == 'M')
-                                                            {
-                                                                <img src="~/images/icon/user-male.png" />
-                                                            }
-                                                            else
-                                                            {
-                                                                <img src="~/images/icon/user-male.png" />
-                                                            }
+                                                        if(Model.Gender == 'M')
+                                                        {
+                                                        <img src="~/images/icon/user-male.png" />
+                                                        }
+                                                        else
+                                                        {
+                                                        <img src="~/images/icon/user-male.png" />
+                                                        }
                                                         }
                                                     </a>
                                                 </div>
@@ -341,7 +342,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href=@Url.Action("Logout", "Users")>
+                                                <a href=@Url.Action("Logout", "Users" )>
                                                     <i class="zmdi zmdi-power"></i> Logout</a>
                                             </div>
                                         </div>
@@ -358,27 +359,27 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                         <div class="row">
-                            <div class="col-lg-6 col-sm-8 col-md-6">
-                                <a style="color: white;" class="btn btn-success" href=@Url.Action("AddDep", "Dashboard")> <i class="fas fa-plus"></i> Create department</a>
-                                <br>
-                                <br>
-                                <div class="table-responsive table--no-card m-b-30">
-                                    <table id="depTable" class="table table-borderless table-striped table-earning">
-                                        <thead>
-                                            <tr>
-                                                <th>Dep#</th>
-                                                <th>Name</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-md-12">
+                            <div class="table-responsive table--no-card m-b-30">
+                                <table id="leavesTable" class="table table-borderless table-striped table-earning">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Description</th>
+                                            <th>Date from</th>
+                                            <th>Date to</th>
+                                            <th>Status</th>
+                                            <th>Requested by</th>
+                                            <th class="text-center">Options</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -413,30 +414,102 @@
     <script src="~/js/main.js"></script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
 
-                getData();
+            getAll();
+
+            $(".optionGreen").on("click", function () {
+
+                var id = $(this).attr("leaveid");
+                approve(id);
+            });
+
+            $(".optionRed").on("click", function () {
+
+                var id = $(this).attr("leaveid");
+                decline(id);
+            });
 
         });
 
-        function getData(){
-            
-            $table = $("#depTable");
+        function approve(id) {
 
             $.ajax({
-                url: "http://localhost:5000/api/Departments/GetAll",
+
+                url: "http://localhost:5000/api/Leaves/Approve/" + id,
                 type: "GET",
-                success: function(response) {
+                success: function (response) {
 
-                    jQuery.each(response, function(i, item){
-
-                        $table.append("<tr> <td>" + item.depNo  + "</td>  <td>" + item.depName  + "</td> <td><button class='btn btn-info'><i class='fa fa-info'></i></button></td></tr>");
-                    })
+                    console.log(response);
                 },
-                error: function(response) {
+                error: function (response) {
 
-                    console.log("Error " + response.error);
-                } 
+                    console.log(response);
+                }
+            });
+
+            location.reload();
+        }
+
+        function decline(id) {
+
+            $.ajax({
+
+                url: "http://localhost:5000/api/Leaves/Decline/" + id,
+                type: "GET",
+                success: function (response) {
+
+                    console.log(response);
+                },
+                error: function (response) {
+
+                    console.log(response);
+                }
+            });
+
+            location.reload();
+        }
+
+        function getAll() {
+
+            $table = $("#leavesTable");
+
+            $.ajax({
+
+                url: "http://localhost:5000/api/Leaves/GetAll",
+                type: "GET",
+                success: function (response) {
+
+                    console.log(response);
+
+                    jQuery.each(response, function (i, item) {
+
+                        var dateFrom = new Date();
+                        var dateTo = new Date();
+
+                        dateFrom = item.fromDate.substr(0, 10);
+                        dateTo = item.toDate.substr(0, 10);
+
+                        if (item.leaveStatus == "approved" || item.leaveStatus == "Approved") {
+
+                            $table.append("<tr> <td>" + item.leaveId + "</td> <td>" + item.description + "</td> <td>" + dateFrom + "</td> <td>" + dateTo + "</td> <td><span style='font-size: 16px;' class='badge badge-success'>Approved</span></td> <td>" + item.empName + "</td> <td></td> </tr>");
+                        }
+                        else if (item.leaveStatus == "denied" || item.leaveStatus == "Denied") {
+
+                            $table.append("<tr> <td>" + item.leaveId + "</td> <td>" + item.description + "</td> <td>" + dateFrom + "</td> <td>" + dateTo + "</td> <td><span style='font-size: 16px;' class='badge badge-danger'>Declined</span></td> <td>" + item.empName + "</td> <td></td> </tr>");
+                        }
+                        else if (item.leaveStatus == "pending" || item.leaveStatus == "Pending") {
+
+                            $table.append("<tr> <td>" + item.leaveId + "</td> <td>" + item.description + "</td> <td>" + dateFrom + "</td> <td>" + dateTo + "</td> <td><span style='font-size: 16px;' class='badge badge-warning'>Pending</span></td> <td>" + item.empName + "</td> <td><button onclick='approve(this.value)' value='" + item.leaveId + "' class='optionGreen btn btn-success'>Approve</button><button onclick='decline(this.value)' value='" + item.leaveId + "' class='optionRed btn btn-danger'>Decline</button></td> </tr>");
+                        }
+
+                    });
+                },
+                error: function (error) {
+
+                    console.log(error.error);
+                }
+
             });
         }
     </script>

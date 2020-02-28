@@ -2971,6 +2971,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Regular\\Leaves.cshtml",
+      "TargetPath": "Views\\Regular\\Leaves.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Admin\\Departments.cshtml",
       "TargetPath": "Views\\Admin\\Departments.cshtml",
       "FileKind": "mvc"
@@ -3008,6 +3013,11 @@
     {
       "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\PC\\Desktop\\SQL\\proekt\\project_bazi\\project_bazi\\Views\\Admin\\Leaves.cshtml",
+      "TargetPath": "Views\\Admin\\Leaves.cshtml",
       "FileKind": "mvc"
     },
     {
