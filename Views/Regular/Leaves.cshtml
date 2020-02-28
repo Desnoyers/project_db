@@ -332,10 +332,7 @@ Layout = null;
                     <div class="container-fluid">
 
                     </div>
-                    <div class="row">
-                        <a href=@Url.Action("")><button class="btn btn-info"><i class="fa fa-info"></i> Request a leave</button></a>
-                        <br>
-                        <br>
+                    <!-- <div class="row">
                         <div class="table-responsive table--no-card m-b-30">
                             <table id="myLeaves" class="table table-borderless table-striped table-earning">
                                 <thead>
@@ -350,6 +347,45 @@ Layout = null;
                                 <tbody>
                                 </tbody>
                             </table>
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong><i class="fa fa-info-circle"></i> Request a leave</strong>
+                                </div>
+                                <div class="card-body card-block">
+                                    <form action="http://localhost:5000/Dashboard/Leaves/RequestLeave" method="post" class="form-horizontal">
+                                        <div class="row form-group">
+
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="description" name="description" placeholder="Enter description..." class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-12 col-md-9">
+                                                <input type="date" id="datef" name="dateFrom" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-12 col-md-9">
+                                                <input type="date" id="datet" name="dateTo" class="form-control">
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                        <button type="reset" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-ban"></i> Reset
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="card-footer">
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -400,11 +436,15 @@ Layout = null;
                 type: "GET",
                 success: function(response) {
 
-                    console.log(response);
-
                     jQuery.each(response, function(i, item){
 
-                        $page.append("<div class='card'><div class='card-header'>" + item.proName + "</div><div class='card-body'></div></div>");
+                        var dateFrom = new Date();
+                        var dateTo = new Date();
+
+                        dateFrom = item.fromDate.substr(0, 10);
+                        dateTo = item.toDate.substr(0, 10);
+
+                        $page.append("<tr> <td>" + item.leaveId + "</td> <td>" + item.description + "</td> <td>" + item.dateFrom + "</td> <td>" + item.dateTo + "</td> <td>" + item.leaveStatus + "</td> </tr>");
                     });
                 },
                 error: function(response) {

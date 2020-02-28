@@ -20,7 +20,7 @@ namespace project_bazi.Controllers
 
         [HttpGet]
         public ActionResult Index()
-        { 
+        {
 
             if (AppState.Authenticated == true)
             {
@@ -31,7 +31,7 @@ namespace project_bazi.Controllers
                 EmployeesDto employee = new EmployeesDto();
 
                 #region Emp initialization
-                
+
                 employee.Embg = user.Embg;
                 employee.FirstName = user.FirstName;
                 employee.LastName = user.LastName;
@@ -49,10 +49,10 @@ namespace project_bazi.Controllers
                 employee.BirthDate = user.BirthDate;
                 employee.DepManager = user.DepManager;
                 employee.DepNo = user.DepNo;
-             
+
                 #endregion
-              
-                if(employee.DepManager != null)
+
+                if (employee.DepManager != null)
                 {
                     return View("../Admin/Index", employee);
                 }
@@ -63,7 +63,7 @@ namespace project_bazi.Controllers
             }
             else
             {
-                return RedirectToAction("Login","Users");
+                return RedirectToAction("Login", "Users");
             }
         }
 
@@ -71,7 +71,7 @@ namespace project_bazi.Controllers
         [HttpGet("Employees")]
         public ActionResult Employees()
         {
-            if(AppState.Authenticated == true)
+            if (AppState.Authenticated == true)
             {
                 string userEmbg = AppState.UserStateData;
 
@@ -80,7 +80,7 @@ namespace project_bazi.Controllers
                 EmployeesDto employee = new EmployeesDto();
 
                 #region Emp initialization
-                
+
                 employee.Embg = user.Embg;
                 employee.FirstName = user.FirstName;
                 employee.LastName = user.LastName;
@@ -99,7 +99,7 @@ namespace project_bazi.Controllers
                 employee.DepManager = user.DepManager;
                 employee.DepNo = user.DepNo;
                 // employee.DepName = user.DepNoNavigation.DepName;
-             
+
                 #endregion
 
                 return View("../Admin/Employees", employee);
@@ -114,7 +114,7 @@ namespace project_bazi.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Add([FromForm] EmployeesDto employee)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
@@ -139,7 +139,7 @@ namespace project_bazi.Controllers
             newEmp.StreetNo = employee.StreetNo;
             newEmp.Salary = employee.Salary;
             newEmp.Phone = employee.Phone;
-            
+
             newEmp.Username = null;
             newEmp.Password = null;
 
@@ -149,7 +149,7 @@ namespace project_bazi.Controllers
 
             var user = _context.Employees.Find(newEmp.Embg);
 
-            if(user != null)
+            if (user != null)
             {
                 return BadRequest("Employee exists");
             }
@@ -163,7 +163,7 @@ namespace project_bazi.Controllers
             {
                 _context.SaveChanges();
             }
-            catch(DbUpdateException ex)
+            catch (DbUpdateException ex)
             {
                 ex.GetBaseException();
             }
@@ -183,7 +183,7 @@ namespace project_bazi.Controllers
                 EmployeesDto employee = new EmployeesDto();
 
                 #region Emp initialization
-                
+
                 employee.Embg = user.Embg;
                 employee.FirstName = user.FirstName;
                 employee.LastName = user.LastName;
@@ -201,10 +201,10 @@ namespace project_bazi.Controllers
                 employee.BirthDate = user.BirthDate;
                 employee.DepManager = user.DepManager;
                 employee.DepNo = user.DepNo;
-             
+
                 #endregion
-              
-                if(employee.DepManager != null)
+
+                if (employee.DepManager != null)
                 {
                     return View("../Admin/AddEmployee", employee);
                 }
@@ -215,7 +215,7 @@ namespace project_bazi.Controllers
             }
             else
             {
-                return RedirectToAction("Login","Users");
+                return RedirectToAction("Login", "Users");
             }
         }
 
@@ -231,7 +231,7 @@ namespace project_bazi.Controllers
                 EmployeesDto employee = new EmployeesDto();
 
                 #region Emp initialization
-                
+
                 employee.Embg = user.Embg;
                 employee.FirstName = user.FirstName;
                 employee.LastName = user.LastName;
@@ -249,15 +249,15 @@ namespace project_bazi.Controllers
                 employee.BirthDate = user.BirthDate;
                 employee.DepManager = user.DepManager;
                 employee.DepNo = user.DepNo;
-             
+
                 #endregion
 
                 return View("../Admin/Departments", employee);
-              
+
             }
             else
             {
-                return RedirectToAction("Login","Users");
+                return RedirectToAction("Login", "Users");
             }
         }
 
@@ -273,7 +273,7 @@ namespace project_bazi.Controllers
                 EmployeesDto employee = new EmployeesDto();
 
                 #region Emp initialization
-                
+
                 employee.Embg = user.Embg;
                 employee.FirstName = user.FirstName;
                 employee.LastName = user.LastName;
@@ -291,10 +291,10 @@ namespace project_bazi.Controllers
                 employee.BirthDate = user.BirthDate;
                 employee.DepManager = user.DepManager;
                 employee.DepNo = user.DepNo;
-             
+
                 #endregion
-              
-                if(employee.DepManager != null)
+
+                if (employee.DepManager != null)
                 {
                     return View("../Admin/AddDepartment", employee);
                 }
@@ -305,7 +305,7 @@ namespace project_bazi.Controllers
             }
             else
             {
-                return RedirectToAction("Login","Users");
+                return RedirectToAction("Login", "Users");
             }
         }
 
@@ -313,16 +313,16 @@ namespace project_bazi.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddDep([FromForm] Departments department)
         {
-            if(AppState.Authenticated != true)
+            if (AppState.Authenticated != true)
             {
                 return RedirectToAction("Login", "Users");
             }
 
             var exist = _context.Departments.Find(department.DepNo);
 
-            if(exist != null)
+            if (exist != null)
             {
-               return BadRequest("Department number exist");
+                return BadRequest("Department number exist");
             }
 
             _context.Departments.Add(department);
@@ -331,7 +331,7 @@ namespace project_bazi.Controllers
             {
                 _context.SaveChanges();
             }
-            catch(DbUpdateException ex)
+            catch (DbUpdateException ex)
             {
                 ex.GetBaseException();
             }
@@ -351,7 +351,7 @@ namespace project_bazi.Controllers
                 EmployeesDto employee = new EmployeesDto();
 
                 #region Emp initialization
-                
+
                 employee.Embg = user.Embg;
                 employee.FirstName = user.FirstName;
                 employee.LastName = user.LastName;
@@ -369,14 +369,14 @@ namespace project_bazi.Controllers
                 employee.BirthDate = user.BirthDate;
                 employee.DepManager = user.DepManager;
                 employee.DepNo = user.DepNo;
-             
+
                 #endregion
 
                 return View("../Admin/Leaves", employee);
             }
             else
             {
-                return RedirectToAction("Login","Users");
+                return RedirectToAction("Login", "Users");
             }
         }
 
@@ -392,7 +392,7 @@ namespace project_bazi.Controllers
                 EmployeesDto employee = new EmployeesDto();
 
                 #region Emp initialization
-                
+
                 employee.Embg = user.Embg;
                 employee.FirstName = user.FirstName;
                 employee.LastName = user.LastName;
@@ -410,14 +410,47 @@ namespace project_bazi.Controllers
                 employee.BirthDate = user.BirthDate;
                 employee.DepManager = user.DepManager;
                 employee.DepNo = user.DepNo;
-             
+
                 #endregion
 
                 return View("../Regular/Leaves", employee);
             }
             else
             {
-                return RedirectToAction("Login","Users");
+                return RedirectToAction("Login", "Users");
+            }
+        }
+
+        [HttpPost("Leaves/RequestLeave")]
+        public ActionResult RequestLeave([FromForm] LeavesModel leave)
+        {
+            if (AppState.Authenticated == true)
+            {
+                Leaves le = new Leaves();
+
+                le.LeaveId = leave.LeaveId;
+                le.Description = leave.Description;
+                le.EmpEmbg = AppState.UserStateData;
+                le.LeaveStatus = "Pending";
+                le.Fromdate = leave.FromDate;
+                le.Todate = leave.ToDate;
+
+                _context.Leaves.Add(le);
+
+                try
+                {
+                    _context.SaveChanges();
+                }
+                catch(DbUpdateException ex)
+                {
+                    ex.GetBaseException();
+                }
+
+                return RedirectToAction("MyLeaves", "Dashboard");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Users");
             }
         }
     }
